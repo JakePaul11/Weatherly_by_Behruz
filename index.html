@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weatherly — Weather App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="weather-default">
+
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="logo">
+                <div class="logo-icon">☁️</div>
+
+                <div>
+                    <h1>Weatherly</h1>
+                    <p id="subtitle">Ob-havo ma'lumotlari</p>
+                </div>
+            </div>
+
+            <select id="languageSelect" class="language-select">
+                <option value="uz">🇺🇿 O'zbek</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="ru">🇷🇺 Русский</option>
+            </select>
+
+        </header>
+
+
+        <!-- SEARCH -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Shahar nomini kiriting..."
+                    autocomplete="off"
+                >
+
+                <button id="getWeatherBtn">
+                    <span id="searchButtonText">Qidirish</span>
+                </button>
+
+            </div>
+
+            <p id="errorMessage" class="error-message hidden"></p>
+
+        </section>
+
+
+        <!-- LOADER -->
+        <div id="loader" class="loader-container hidden">
+            <div class="loader"></div>
+            <p id="loadingText">Ob-havo yuklanmoqda...</p>
+        </div>
+
+
+        <!-- WEATHER RESULT -->
+        <section id="weatherResult" class="weather-content hidden">
+
+            <!-- MAIN WEATHER CARD -->
+            <div class="main-weather-card">
+
+                <div class="weather-location">
+
+                    <p class="location-label" id="currentWeatherText">
+                        Hozirgi ob-havo
+                    </p>
+
+                    <h2 id="cityName">Tashkent, UZ</h2>
+
+                    <p id="currentDate"></p>
+
+                </div>
+
+
+                <div class="main-weather">
+
+                    <div class="weather-icon-wrapper">
+                        <img id="weatherIcon" alt="Weather icon">
+                    </div>
+
+                    <div class="temperature-section">
+
+                        <div class="temperature">
+                            <span id="temperature">--</span>
+                            <span class="degree">°C</span>
+                        </div>
+
+                        <p id="description"></p>
+
+                        <p class="feels-like">
+                            <span id="feelsLikeLabel">His qilinishi:</span>
+                            <span id="feelsLike"></span>°C
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DETAILS -->
+            <div class="details-grid">
+
+                <div class="detail-card">
+                    <div class="detail-icon">💧</div>
+
+                    <div>
+                        <p class="detail-title" id="humidityLabel">
+                            Namlik
+                        </p>
+
+                        <h3 id="humidity">--%</h3>
+                    </div>
+                </div>
+
+
+                <div class="detail-card">
+                    <div class="detail-icon">💨</div>
+
+                    <div>
+                        <p class="detail-title" id="windLabel">
+                            Shamol
+                        </p>
+
+                        <h3 id="windSpeed">-- m/s</h3>
+                    </div>
+                </div>
+
+
+                <div class="detail-card">
+                    <div class="detail-icon">🌡️</div>
+
+                    <div>
+                        <p class="detail-title" id="pressureLabel">
+                            Bosim
+                        </p>
+
+                        <h3 id="pressure">-- hPa</h3>
+                    </div>
+                </div>
+
+
+                <div class="detail-card">
+                    <div class="detail-icon">👁️</div>
+
+                    <div>
+                        <p class="detail-title" id="visibilityLabel">
+                            Ko'rinish
+                        </p>
+
+                        <h3 id="visibility">-- km</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- SUN -->
+            <div class="sun-card">
+
+                <div class="sun-item">
+                    <span class="sun-icon">🌅</span>
+
+                    <div>
+                        <p id="sunriseLabel">Quyosh chiqishi</p>
+                        <h3 id="sunrise">--:--</h3>
+                    </div>
+                </div>
+
+
+                <div class="sun-divider"></div>
+
+
+                <div class="sun-item">
+                    <span class="sun-icon">🌇</span>
+
+                    <div>
+                        <p id="sunsetLabel">Quyosh botishi</p>
+                        <h3 id="sunset">--:--</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INITIAL SCREEN -->
+        <section id="welcomeScreen" class="welcome-screen">
+
+            <div class="welcome-icon">🌤️</div>
+
+            <h2 id="welcomeTitle">
+                Ob-havoni tekshiring
+            </h2>
+
+            <p id="welcomeText">
+                Istalgan shahar nomini kiriting va joriy ob-havo ma'lumotlarini oling.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="weather-container">
+        <h1>Ob havo</h1>
+        <div class="input-container">
+            <input type="text" id="cityInput" placeholder="Enter city name"><br><br>
+            <button id="getWeatherBtn">Ob havoni bilish</button>
+        </div>
+
+   
+
+        <div id="weatherResult" class="hidden">
+            <h2 id="cityName"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+            <p id="humidity"></p>
+            <p id="windSpeed"></p>
+        </div>
+        <p id="errorMessage" class="hidden"></p>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html> -->
